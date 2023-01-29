@@ -11,6 +11,10 @@
             flex-direction: column;
             height: 100vh;
         }
+        /* submit box style
+        textarea {
+            box-shadow: inset 2px 2px 5px gray;
+        }
 
         /* style for the submit button */
         input[type="submit"] {
@@ -25,11 +29,16 @@
 
         /* style for the criteria box */
         .criteria-box {
-            padding: 15px;
-            border: 1px solid gray;
-            margin: 10px;
-            width: 30%;
+                padding: 15px;
+                border: 1px solid gray;
+                margin: 10px;
+                flex-wrap: wrap; /* added flex-wrap property to allow content to wrap onto multiple lines */
         }
+        /* style for the criteria box */
+        .criteria-box ul {
+                text-align: left; /* added text-align property */
+}
+
     </style>
 </head>
 <body>
@@ -39,7 +48,7 @@
     {% endif %}
     <form align="center" method="post">
         <label for="submission_text">Poem:</label>
-        <textarea name="submission_text" id="submission_text"></textarea>
+        <textarea name="submission_text" id="submission_text" rows="10" cols="50"></textarea>
         <br>
         <label for="email">Email:</label>
         <input type="email" name="email" id="email">
@@ -49,14 +58,17 @@
     <div class="criteria-box" align="center">
         <h2>Criteria</h2>
         <ul>
+            <ul>The Current theme is: Poems</ul>
             <li>Your submission must be original and not previously published</li>
+            <li>Double check your email before submitting. There is no way to change this afterwards!</li>
             <li>By submitting, you agree to the following terms:
-                <li>you are verifying that you are the creator of and own the work you submit</li>
+                <ul>
+                <li>you affirm that you are the creator of and own the work you submit</li>
+                <li>you affirm that the submission is original and not previously published</li>
                 <li>you consent to your work potentially being featured/published/otherwise used in any form by Robots Decide Litmag</li>
                 <li>you understand you may receive emails regarding your submission</li>
                 <li>you understand you may receive marketing emails from Robots Decide Litmag which you can unsubscribe from at any time</li>
-            <li>Double check your email before submitting. There is no way to change this afterwards.</li>
-            <li>Poems</li>
+             <ul>
         </ul>
     </div>
 </body>
