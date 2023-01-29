@@ -36,6 +36,10 @@
             display: none;
             align-items: center;
             justify-content: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         .info-box.show {
             display: block;
@@ -43,6 +47,14 @@
         .info-box h2 {
             margin-bottom: 10px;
         }
+    .back-button {
+        text-decoration: none;
+        color: #fff;
+        background-color: #000;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
     </style>
 </head>
 <body>
@@ -53,12 +65,14 @@
         <div class="info-box" id="info-box">
             <h2>What is Robots Decide Litmag</h2>
             <p>This is a literary magazine where robots select the poems that are submitted. Anyone can submit a poem, but only the ones chosen by the robots will be published. Robots Decide Litmag is the first automated litmag. It is a lighthearted experiment to show the shortcomings of artificial intelligence, and just to have some fun. It instantly gives you an acceptance/denial and adds your piece to the next issue. Please understand that this is not meant to endorse AI replacing people. That is bad.</p>
+            <button class="back-button" onclick="location.href='/'">Go Back</button>
         </div>
     </div>
     <script>
         var infoButton = document.querySelector("#info-button");
         var infoBox = document.querySelector("#info-box");
         infoButton.addEventListener("click", function(){
+            infoButton.style.display = "none";
             infoBox.classList.toggle("show");
         });
     </script>
