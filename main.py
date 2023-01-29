@@ -3,8 +3,12 @@ from transformers import pipeline
 from sqlalchemy import create_engine, Column, String, Integer
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from flask_basicauth import BasicAuth
 
 app = Flask(__name__)
+app.config['BASIC_AUTH_USERNAME'] = 'username'
+app.config['BASIC_AUTH_PASSWORD'] = 'password'
+basic_auth = BasicAuth(app)
 
 classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 candidate_labels = ['good poetry', 'bad poetry']
@@ -56,11 +60,17 @@ def submit():
     return render_template('submit.html')
 
 @app.route('/submissions')
+@basic_auth.required
 def submissions():
     session = get_db()
     # Fetch all the submissions from the table
     submissions = session.query(Submission).all()
     session.close()
+
+    # Replace newline characters with <br> tags
+    for submission in submissions:
+        submission.submission_text = submission.submission_text.replace('\n', '<br>')
+
     return render_template('submissions.html', submissions=submissions)
 
 if __name__ == '__main__':

@@ -6,10 +6,9 @@
   </tr>
   {% for submission in submissions %}
   <tr style="border-bottom: 1px solid #ddd;">
-    <td style="padding: 12px;">{{ submission[0] }}</td>
-    <td style="padding: 12px;">{{ submission[1] }}</td>
-    <td style="padding: 12px;">{{ submission[2] }}</td>
+    <td style="padding: 12px;">{{ submission.submission_text }}</td>
+    <td style="padding: 12px;">{{ submission.email }}</td>
+    <td style="padding: 12px;">{{ submission.decision }}</td>
   </tr>
   {% endfor %}
 </table>
-
