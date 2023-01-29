@@ -1,16 +1,32 @@
 from flask import Flask, render_template, request, redirect
 from transformers import pipeline
-import sqlite3
+from sqlalchemy import create_engine, Column, String, Integer
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 app = Flask(__name__)
 
 classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 candidate_labels = ['good poetry', 'bad poetry']
 
+# Create an SQLAlchemy base
+Base = declarative_base()
+
+# Define the Submission table
+class Submission(Base):
+    __tablename__ = 'submissions'
+    id = Column(Integer, primary_key=True)
+    submission_text = Column(String)
+    email = Column(String)
+    decision = Column(String)
+
 def get_db():
-    conn = sqlite3.connect('submissions.db')
-    conn.execute('''CREATE TABLE IF NOT EXISTS submissions (submission_text TEXT, email TEXT, decision TEXT)''')
-    return conn
+    # Create a SQLite database
+    engine = create_engine('sqlite:///submissions.db', echo=True)
+    Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    return session
 
 @app.route('/')
 def home():
@@ -29,21 +45,22 @@ def submit():
             decision = 'accepted'
         else:
             decision = 'denied'
-        conn = get_db()
-        conn.execute("INSERT INTO submissions (submission_text, email, decision) VALUES (?,?,?)", (submission_text, email, decision))
-        conn.commit()
-        conn.close()
+        session = get_db()
+        # Create a new Submission object and add it to the session
+        submission = Submission(submission_text=submission_text, email=email, decision=decision)
+        session.add(submission)
+        # Commit the transaction
+        session.commit()
+        session.close()
         return render_template('result.html', decision=decision)
     return render_template('submit.html')
 
 @app.route('/submissions')
 def submissions():
-    conn = get_db()
-    cursor = conn.execute("SELECT submission_text, email, decision FROM submissions")
-    submissions = cursor.fetchall()
-    for i in range(len(submissions)):
-        submissions[i] = (submissions[i][0].replace("\n", "<br>"),) + submissions[i][1:]
-    conn.close()
+    session = get_db()
+    # Fetch all the submissions from the table
+    submissions = session.query(Submission).all()
+    session.close()
     return render_template('submissions.html', submissions=submissions)
 
 if __name__ == '__main__':
