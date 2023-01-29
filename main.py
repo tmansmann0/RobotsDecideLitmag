@@ -41,6 +41,8 @@ def submissions():
     conn = get_db()
     cursor = conn.execute("SELECT submission_text, email, decision FROM submissions")
     submissions = cursor.fetchall()
+    for i in range(len(submissions)):
+        submissions[i] = (submissions[i][0].replace("\n", "<br>"),) + submissions[i][1:]
     conn.close()
     return render_template('submissions.html', submissions=submissions)
 

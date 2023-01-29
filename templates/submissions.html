@@ -1,14 +1,15 @@
-<table>
-  <tr>
-    <th>Submission Text</th>
-    <th>Email</th>
-    <th>Decision</th>
+<table style="width:100%; border-collapse: collapse;">
+  <tr style="border-bottom: 1px solid #ddd;">
+    <th style="padding: 12px; text-align: left;">Submission Text</th>
+    <th style="padding: 12px; text-align: left;">Email</th>
+    <th style="padding: 12px; text-align: left;">Status</th>
   </tr>
   {% for submission in submissions %}
-  <tr>
-    <td>{{ submission[0] }}</td>
-    <td>{{ submission[1] }}</td>
-    <td>{{ submission[2] }}</td>
+  <tr style="border-bottom: 1px solid #ddd;">
+    <td style="padding: 12px;">{{ submission[0] }}</td>
+    <td style="padding: 12px;">{{ submission[1] }}</td>
+    <td style="padding: 12px;">{{ submission[2] }}</td>
   </tr>
   {% endfor %}
 </table>
+
