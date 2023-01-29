@@ -64,7 +64,7 @@
     {% if error %}
         <p style="color:red;">{{ error }}</p>
     {% endif %}
-    <form align="center" method="post">
+    <form align="center" method="post" name="submitForm" onsubmit="return validateForm()">
         <textarea name="submission_text" id="submission_text" rows="10" cols="50" placeholder="Insert submission here"></textarea>
         <br>
         <label for="email">Email:</label>
@@ -88,5 +88,25 @@
              <ul>
         </ul>
     </div>
+<script>
+    function validateForm() {
+        var email = document.forms["submitForm"]["email"].value;
+        var submission = document.forms["submitForm"]["submission_text"].value;
+        var errorMessage = "";
+
+        if (email == "" && submission == "") {
+            errorMessage += "Please enter an email and submission before submitting.";
+        } else if (email == "") {
+            errorMessage += "Please enter an email before submitting.";
+        } else if (submission == "") {
+            errorMessage += "Please enter a submission before submitting.";
+        }
+
+        if (errorMessage != "") {
+            alert(errorMessage);
+            return false;
+        }
+    }
+</script>
 </body>
 </html>
