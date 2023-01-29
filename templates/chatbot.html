@@ -6,19 +6,40 @@
     .chatbot-button {
         position: fixed;
         bottom: 20px;
-        left: 20px;
+        right: 20px;
         padding: 20px;
     }
     .chatbot-container {
         display: none;
         position: fixed;
         bottom: 70px;
-        left: 20px;
+        right: 20px;
         background-color: white;
         padding: 20px;
         width: 300px;
         height: 400px;
         overflow: auto;
+    }
+    .user-message {
+        background-color: #ddd;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        float: right;
+        clear: both;
+    }
+    .chatbot-message {
+        background-color: #eee;
+        padding: 10px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        float: left;
+        clear: both;
+    }
+    body{
+        background-image: url("background.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
     }
   </style>
 </head>
@@ -26,7 +47,7 @@
   <img class="chatbot-button" id="chatbot-button" src="{{ url_for('static', filename='wave.gif') }}" onclick="toggleChatbot()">
   <div class="chatbot-container" id="chatbot-container">
     <div id="chatbot-messages">
-      <p>Hello, I am your chatbot. How can I help you today?</p>
+      <p class="chatbot-message">Hello, I'm Rob the litmag robot. Its nice to meet you!</p>
     </div>
     <form>
       <input type="text" id="user-input" placeholder="Type your message here...">
@@ -53,7 +74,8 @@
             }
         })
         .then(response => response.json())
-        .then(data => {
+        .then
+        (data => {
             // Append the chatbot's response to the chatbot-messages div
             var messages = document.getElementById("chatbot-messages");
             messages.innerHTML += "<p>" + data.response + "</p>";
