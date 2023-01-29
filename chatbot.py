@@ -20,6 +20,5 @@ def chatbot():
 def index():
     return render_template('chatbot.html')
 
-
 if __name__ == '__main__':
     app.run()
