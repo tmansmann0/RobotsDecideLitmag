@@ -30,12 +30,12 @@ def submit():
         else:
             decision = 'denied'
         conn = get_db()
-        conn.execute("INSERT INTO submissions (submission_text, email, decision) VALUES (?,?,?)",
-                     (submission_text, email, decision))
+        conn.execute("INSERT INTO submissions (submission_text, email, decision) VALUES (?,?,?)", (submission_text, email, decision))
         conn.commit()
         conn.close()
         return render_template('result.html', decision=decision)
     return render_template('submit.html')
+
 @app.route('/submissions')
 def submissions():
     conn = get_db()
