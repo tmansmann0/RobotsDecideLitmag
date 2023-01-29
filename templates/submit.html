@@ -2,13 +2,42 @@
 <html>
 <head>
     <title>Submit a Poem</title>
+    <style>
+        /* center elements vertically and horizontally */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* style for the submit button */
+        input[type="submit"] {
+            padding: 10px 15px;
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        /* style for the criteria box */
+        .criteria-box {
+            padding: 15px;
+            border: 1px solid gray;
+            margin: 10px;
+            width: 30%;
+        }
+    </style>
 </head>
 <body>
-    <h1>Submit a Poem</h1>
+    <h1 align="center">Submit a Poem</h1>
     {% if error %}
         <p style="color:red;">{{ error }}</p>
     {% endif %}
-    <form method="post">
+    <form align="center" method="post">
         <label for="submission_text">Poem:</label>
         <textarea name="submission_text" id="submission_text"></textarea>
         <br>
@@ -17,5 +46,18 @@
         <br>
         <input type="submit" value="Submit">
     </form>
+    <div class="criteria-box" align="center">
+        <h2>Criteria</h2>
+        <ul>
+            <li>Your submission must be original and not previously published</li>
+            <li>By submitting, you agree to the following terms:
+                <li>you are verifying that you are the creator of and own the work you submit</li>
+                <li>you consent to your work potentially being featured/published/otherwise used in any form by Robots Decide Litmag</li>
+                <li>you understand you may receive emails regarding your submission</li>
+                <li>you understand you may receive marketing emails from Robots Decide Litmag which you can unsubscribe from at any time</li>
+            <li>Double check your email before submitting. There is no way to change this afterwards.</li>
+            <li>Poems</li>
+        </ul>
+    </div>
 </body>
 </html>
