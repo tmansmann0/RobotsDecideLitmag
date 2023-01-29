@@ -2,6 +2,47 @@
 <html>
 <head>
     <title>404 Error</title>
+    <style>
+        @font-face {
+          font-family: 'MajorMonoDisplay-Regular';
+          src: url({{ url_for('static', filename='MajorMonoDisplay-Regular.ttf') }});
+        }
+        @font-face {
+        font-family: 'Audiowide-Regular';
+        src: url({{ url_for('static', filename='Audiowide-Regular.ttf') }});
+        }
+        body {
+            text-align: center;
+        }
+        h1 {
+            font-family: 'MajorMonoDisplay-Regular', monospace;
+            font-size: 80px;
+            text-align: center;
+        }
+        p {
+            font-family: 'Audiowide-Regular', cursive;
+            font-size: 20px;
+            text-align: center;
+        }
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button {
+            font-family: 'Audiowide-Regular', cursive;
+            font-size: 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h1>404 Page not found</h1>
