@@ -2,9 +2,53 @@
 <html>
 <head>
     <title>Robots Decide Litmag</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .info-box {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .info-box h2 {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>Robots Decide Litmag</h1>
     <a href="{{ url_for('submit') }}">Submit a Poem</a>
+    <div class="info-container">
+        <a href="#" onclick="toggleInfo()">What is this?</a>
+        <div class="info-box">
+            <h2>Robots Decide Litmag</h2>
+            <p>This is a literary magazine where robots select the poems that are submitted. Anyone can submit a poem, but only the ones chosen by the robots will be published.</p>
+        </div>
+    </div>
+    <script>
+        function toggleInfo() {
+            var infoBox = document.querySelector('.info-box');
+            if (infoBox.style.display === "none") {
+                infoBox.style.display = "block";
+            } else {
+                infoBox.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
