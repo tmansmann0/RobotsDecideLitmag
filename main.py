@@ -73,5 +73,10 @@ def submissions():
 
     return render_template('submissions.html', submissions=submissions)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
 if __name__ == '__main__':
     app.run()
