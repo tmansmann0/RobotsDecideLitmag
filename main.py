@@ -36,6 +36,13 @@ def submit():
         conn.close()
         return render_template('result.html', decision=decision)
     return render_template('submit.html')
+@app.route('/submissions')
+def submissions():
+    conn = get_db()
+    cursor = conn.execute("SELECT submission_text, email, decision FROM submissions")
+    submissions = cursor.fetchall()
+    conn.close()
+    return render_template('submissions.html', submissions=submissions)
 
 if __name__ == '__main__':
     app.run()
