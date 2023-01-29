@@ -1,10 +1,9 @@
-from flask import Flask, render_template, request, jsonify, redirect
-from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
+from flask import Flask, render_template, request
+from transformers import pipeline
 from sqlalchemy import create_engine, Column, String, Integer
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from flask_basicauth import BasicAuth
-
 
 app = Flask(__name__)
 app.config['BASIC_AUTH_USERNAME'] = 'username'
