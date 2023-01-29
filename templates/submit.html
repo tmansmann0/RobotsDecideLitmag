@@ -3,6 +3,16 @@
 <head>
     <title>Submit a Poem</title>
     <style>
+        @font-face {
+        font-family: 'Audiowide-Regular';
+        src: url({{ url_for('static', filename='Audiowide-Regular.ttf') }});
+        }
+        h1 {
+        font-family: 'Audiowide-Regular';
+        }
+        h2 {
+        font-family: 'Audiowide-Regular';
+        }
         /* center elements vertically and horizontally */
         body {
             display: flex;
@@ -47,8 +57,7 @@
         <p style="color:red;">{{ error }}</p>
     {% endif %}
     <form align="center" method="post">
-        <label for="submission_text">Poem:</label>
-        <textarea name="submission_text" id="submission_text" rows="10" cols="50"></textarea>
+        <textarea name="submission_text" id="submission_text" rows="10" cols="50" placeholder="Insert submission here"></textarea>
         <br>
         <label for="email">Email:</label>
         <input type="email" name="email" id="email">
