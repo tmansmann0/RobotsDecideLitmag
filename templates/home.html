@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html>
 <head>
     <title>Robots Decide Litmag</title>
     <style>
+        @font-face {
+          font-family: 'MajorMonoDisplay-Regular';
+          src: url({{ url_for('static', filename='MajorMonoDisplay-Regular.ttf') }});
+        }
         body {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
+        }
+        h1{
+            font-family: 'MajorMonoDisplay-Regular';
         }
         a {
             text-decoration: none;
