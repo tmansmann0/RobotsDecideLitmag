@@ -3,18 +3,29 @@
 <head>
     <title>Decision</title>
     <style>
+        @font-face {
+          font-family: 'MajorMonoDisplay-Regular';
+          src: url({{ url_for('static', filename='MajorMonoDisplay-Regular.ttf') }});
+        }
+        @font-face {
+        font-family: 'Audiowide-Regular';
+        src: url({{ url_for('static', filename='Audiowide-Regular.ttf') }});
+        }
         /* Add some style to the page */
         h1 {
+            font-family: 'MajorMonoDisplay-Regular';
             font-size: 2em;
             font-weight: bold;
             text-align: center;
         }
         p {
+            font-family: 'Audiowide-Regular';
             font-size: 1.5em;
             text-align: center;
         }
         /* Center the button horizontally */
         input[type="submit"] {
+            font-family: 'Audiowide-Regular';
             display: block;
             margin: 20px auto;
             padding: 10px 20px;
