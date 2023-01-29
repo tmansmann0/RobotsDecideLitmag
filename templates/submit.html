@@ -4,17 +4,22 @@
     <title>Submit a Poem</title>
     <style>
         @font-face {
+          font-family: 'MajorMonoDisplay-Regular';
+          src: url({{ url_for('static', filename='MajorMonoDisplay-Regular.ttf') }});
+        }
+        @font-face {
         font-family: 'Audiowide-Regular';
         src: url({{ url_for('static', filename='Audiowide-Regular.ttf') }});
         }
         h1 {
-        font-family: 'Audiowide-Regular';
+        font-family: 'MajorMonoDisplay-Regular';
         }
         h2 {
-        font-family: 'Audiowide-Regular';
+        font-family: 'MajorMonoDisplay-Regular';
         }
         /* center elements vertically and horizontally */
         body {
+            font-family: 'Audiowide-Regular';
             display: flex;
             align-items: center;
             justify-content: center;
@@ -28,8 +33,9 @@
 
         /* style for the submit button */
         input[type="submit"] {
+            font-family: 'Audiowide-Regular';
             padding: 10px 15px;
-            background-color: blue;
+            background-color: black;
             color: white;
             border-radius: 5px;
             border: none;
@@ -43,10 +49,12 @@
                 border: 1px solid gray;
                 margin: 10px;
                 flex-wrap: wrap; /* added flex-wrap property to allow content to wrap onto multiple lines */
+                font-family: 'Audiowide-Regular';
         }
         /* style for the criteria box */
         .criteria-box ul {
                 text-align: left; /* added text-align property */
+                font-family: 'Audiowide-Regular';
 }
 
     </style>
