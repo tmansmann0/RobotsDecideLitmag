@@ -42,9 +42,6 @@ def submit():
     if request.method == 'POST':
         submission_text = request.form['submission_text']
         email = request.form['email']
-        if not submission_text or not email:
-            error = 'Please fill out both the poem and email fields.'
-            return render_template('submit.html', error=error)
         result = classifier(submission_text, candidate_labels)
         if result['labels'][0] == 'good poetry':
             decision = 'accepted'

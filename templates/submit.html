@@ -61,9 +61,6 @@
 </head>
 <body>
     <h1 align="center">Submit a Poem</h1>
-    {% if error %}
-        <p style="color:red;">{{ error }}</p>
-    {% endif %}
     <form align="center" method="post" name="submitForm" onsubmit="return validateForm()">
         <textarea name="submission_text" id="submission_text" rows="10" cols="50" placeholder="Insert submission here"></textarea>
         <br>
