@@ -25,12 +25,25 @@
         .gif-size {
             width: 35%; /* You can adjust this percentage value to control the size of the gif */
         }
+        /* Add custom font for top text */
+        @font-face {
+          font-family: 'MajorMonoDisplay-Regular';
+          src: url({{ url_for('static', filename='MajorMonoDisplay-Regular.ttf') }});
+        }
+
+        /* Add custom font for bottom text */
+        @font-face {
+          font-family: 'Audiowide-Regular';
+          src: url({{ url_for('static', filename='Audiowide-Regular.ttf') }});
+        }
+
     </style>
 </head>
 <body>
     <div class="loading-container">
+        <div style="font-family: 'MajorMonoDisplay-Regular';">Hold tight, Rob is reading your submission</div>
         <img class="loading-gif gif-size" src="{{ url_for('static', filename='loading.gif') }}" alt="Robot Mascot reading your entry">
-        <div class="loading-text">Processing your submission, please wait...</div>
+        <div class="loading-text" style="font-family: 'Audiowide-Regular';">Processing your submission, please wait...</div>
     </div>
 
     <script>
