@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from transformers import pipeline
 from sqlalchemy import create_engine, Column, String, Integer
 from sqlalchemy.ext.declarative import declarative_base
@@ -42,6 +42,7 @@ def submit():
     if request.method == 'POST':
         submission_text = request.form['submission_text']
         email = request.form['email']
+        return render_template('loading.html')
         result = classifier(submission_text, candidate_labels)
         if result['labels'][0] == 'good poetry':
             decision = 'accepted'
@@ -54,7 +55,7 @@ def submit():
         # Commit the transaction
         session.commit()
         session.close()
-        return render_template('result.html', decision=decision)
+        return redirect('result.html', decision=decision)
     return render_template('submit.html')
 
 @app.route('/submissions')
