@@ -23,7 +23,7 @@
             font-size: 24px;
         }
         .gif-size {
-            width: 50%; /* You can adjust this percentage value to control the size of the gif */
+            width: 35%; /* You can adjust this percentage value to control the size of the gif */
         }
     </style>
 </head>
@@ -32,5 +32,11 @@
         <img class="loading-gif gif-size" src="{{ url_for('static', filename='loading.gif') }}" alt="Robot Mascot reading your entry">
         <div class="loading-text">Processing your submission, please wait...</div>
     </div>
+
+    <script>
+        setTimeout(function() {
+            window.location.href = '/result';
+        }, 3000); // 3000 milliseconds = 3 seconds
+    </script>
 </body>
 </html>

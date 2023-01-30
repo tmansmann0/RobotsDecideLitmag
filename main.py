@@ -47,7 +47,6 @@ def submit():
     if request.method == 'POST':
         submission_text = request.form['submission_text']
         email = request.form['email']
-        return render_template('loading.html')
         result = classifier(submission_text, candidate_labels)
         if result['labels'][0] == 'good poetry':
             decision = 'accepted'
@@ -60,7 +59,7 @@ def submit():
         # Commit the transaction
         session.commit()
         session.close()
-        return redirect('/result')
+        return render_template('loading.html')
     return render_template('submit.html')
 
 @app.route('/submissions')
