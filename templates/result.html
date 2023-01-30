@@ -40,12 +40,31 @@
         input[type="submit"]:hover {
             background-color: #0ffe00;
         }
+        #confetti-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
     <h1>Decision</h1>
     {% if decision == 'accepted' %}
         <p>Congratulations! Your poem has been accepted.</p>
+        <script>
+            // Add confetti-js library
+            const ConfettiJS = (function () {
+                ...
+            })();
+
+            // Activate confetti
+            var confettiSettings = {...};
+            var confetti = new ConfettiJS(confettiSettings);
+            confetti.render();
+        </script>
     {% else %}
         <p>Sorry, your poem has been denied.</p>
     {% endif %}
