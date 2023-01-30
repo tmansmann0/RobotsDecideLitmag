@@ -67,6 +67,10 @@
         <label for="email">Email:</label>
         <input type="email" name="email" id="email">
         <br>
+        <br>
+        <input type="checkbox" name="agreement" id="agreement">
+        <label for="agreement">You agree to the terms outlined in the Criteria Box</label>
+        <br>
         <input type="submit" value="Submit">
     </form>
     <div class="criteria-box" align="center">
@@ -86,24 +90,27 @@
         </ul>
     </div>
 <script>
-    function validateForm() {
-        var email = document.forms["submitForm"]["email"].value;
-        var submission = document.forms["submitForm"]["submission_text"].value;
-        var errorMessage = "";
+function validateForm() {
+    var email = document.forms["submitForm"]["email"].value;
+    var submission = document.forms["submitForm"]["submission_text"].value;
+    var agreement = document.forms["submitForm"]["agreement"].checked;
+    var errorMessage = "";
 
-        if (email == "" && submission == "") {
-            errorMessage += "Please enter an email and submission before submitting.";
-        } else if (email == "") {
-            errorMessage += "Please enter an email before submitting.";
-        } else if (submission == "") {
-            errorMessage += "Please enter a submission before submitting.";
-        }
-
-        if (errorMessage != "") {
-            alert(errorMessage);
-            return false;
-        }
+    if (email == "" && submission == "") {
+        errorMessage += "Please enter an email and submission before submitting.";
+    } else if (email == "") {
+        errorMessage += "Please enter an email before submitting.";
+    } else if (submission == "") {
+        errorMessage += "Please enter a submission before submitting.";
+    } else if (!agreement) {
+        errorMessage += "Please agree to the terms outlined in the Criteria Box.";
     }
+
+    if (errorMessage != "") {
+        alert(errorMessage);
+        return false;
+    }
+}
 </script>
 </body>
 </html>
