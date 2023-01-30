@@ -13,6 +13,7 @@ basic_auth = BasicAuth(app)
 #define classifier for determining what is accepted
 classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 candidate_labels = ['good poetry', 'bad poetry']
+theme_labels = ['cyberpunk themed writing', 'other theme']
 
 # Create an SQLAlchemy base
 Base = declarative_base()
@@ -44,7 +45,11 @@ def submit():
         email = request.form['email']
         result = classifier(submission_text, candidate_labels)
         if result['labels'][0] == 'good poetry':
-            decision = 'accepted'
+            result = classifier(submission_text, theme_labels)
+            if result['labels'][0] == 'cyberpunk themed writing':
+                decision = 'accepted'
+            else:
+                decision = 'denied'
         else:
             decision = 'denied'
         session = get_db()
