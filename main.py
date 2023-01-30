@@ -37,11 +37,6 @@ def get_db():
 def home():
     return render_template('home.html')
 
-@app.route('/result')
-def result():
-    decision = request.args.get('decision')
-    return render_template('result.html', decision=decision)
-
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     if request.method == 'POST':
@@ -59,8 +54,13 @@ def submit():
         # Commit the transaction
         session.commit()
         session.close()
-        return render_template('loading.html')
+        return render_template('loading.html', decision=decision)
     return render_template('submit.html')
+
+@app.route('/result')
+def result():
+    decision = request.args.get('decision')
+    return render_template('result.html', decision=decision)
 
 @app.route('/submissions')
 @basic_auth.required
