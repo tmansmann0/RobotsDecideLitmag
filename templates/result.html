@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html>
 <html>
 <head>
     <title>Decision</title>
@@ -54,17 +54,13 @@
     <h1>Decision</h1>
     {% if decision == 'accepted' %}
         <p>Congratulations! Your poem has been accepted.</p>
+        <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.12/dist/confetti.min.js"></script>
         <script>
-            // Add confetti-js library
-            const ConfettiJS = (function () {
-                ...
-            })();
-
-            // Activate confetti
-            var confettiSettings = {...};
-            var confetti = new ConfettiJS(confettiSettings);
+            var confettiSettings = { "target": "confetti-canvas"};
+            var confetti = new ConfettiGenerator(confettiSettings);
             confetti.render();
         </script>
+        <div id="confetti-canvas"></div>
     {% else %}
         <p>Sorry, your poem has been denied.</p>
     {% endif %}
