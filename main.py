@@ -19,9 +19,6 @@ theme = 'Cyberpunk'
 defined_theme = 'Cyberpunk, Dystopian Worlds, Government collapse'
 theme_check = f'theme of {theme} or related contained in writing'
 theme_labels = [f'theme of {theme} or related contained in writing', 'other theme']
-#Offensive Terms
-racism_check = ['racist', 'not racist']
-homophobia_check = ['homophobic or transphobic', 'not homophobic or transphobic']
 
 # Create an SQLAlchemy base
 Base = declarative_base()
@@ -55,18 +52,8 @@ def submit():
         if result['labels'][0] == 'good poetry':
             result = classifier(submission_text, theme_labels)
             if result['labels'][0] == theme_check:
-                result = classifier(submission_text, racism_check)
-                if result['labels'][0] == 'not racist':
-                    result = classifier(submission_text, homophobia_check)
-                    if result['labels'][0] == 'not homophobic or transphobic':
-                        decision = 'accepted'
-                        reason = 'accepted'
-                    else:
-                        decision = 'denied'
-                        reason = 'homophobic or transphobic'
-                else:
-                    decision = 'denied'
-                    reason = 'Racist'
+                decision = 'accepted'
+                reason = 'accepted'
             else:
                 decision = 'denied'
                 reason = 'Not on theme'
