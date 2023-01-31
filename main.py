@@ -16,8 +16,9 @@ candidate_labels = ['good poetry', 'bad poetry']
 
 #Define Theme
 theme = 'Cyberpunk'
-theme_check = f'{theme} themed writing'
-theme_labels = [f'{theme} themed writing', 'other theme']
+defined_theme = 'Cyberpunk, Dystopian Worlds, Government collapse'
+theme_check = f'theme of {theme} or related contained in writing'
+theme_labels = [f'theme of {theme} or related contained in writing', 'other theme']
 #Offensive Terms
 racism_check = ['racist', 'not racist']
 homophobia_check = ['homophobic or transphobic', 'not homophobic or transphobic']
