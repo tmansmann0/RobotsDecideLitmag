@@ -47,8 +47,8 @@
         <p>Congratulations! Your poem has been accepted.</p>
     {% else %}
         <p>Sorry, your poem has been denied.</p>
+        <p>Rob says the reason is: {{ reason }}</p>
     {% endif %}
-    <p>Rob says the reason is: {{ reason }}</p>
     <form action="submit" method="GET">
     <input type="submit" value="Submit Again">
     </form>

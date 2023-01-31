@@ -10,10 +10,12 @@ app.config['BASIC_AUTH_USERNAME'] = 'username'
 app.config['BASIC_AUTH_PASSWORD'] = 'password'
 basic_auth = BasicAuth(app)
 
-#define classifier for determining what is accepted
+#Set the Theme and define classifiers for determining what is accepted
 classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 candidate_labels = ['good poetry', 'bad poetry']
-theme_labels = ['cyberpunk themed writing', 'other theme']
+theme = 'cyberpunk'
+theme_check = f'{theme} themed writing'
+theme_labels = [f'{theme} themed writing', 'other theme']
 
 # Create an SQLAlchemy base
 Base = declarative_base()
@@ -36,7 +38,7 @@ def get_db():
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('home.html', theme=theme)
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
@@ -46,8 +48,9 @@ def submit():
         result = classifier(submission_text, candidate_labels)
         if result['labels'][0] == 'good poetry':
             result = classifier(submission_text, theme_labels)
-            if result['labels'][0] == 'cyberpunk themed writing':
+            if result['labels'][0] == theme_check:
                 decision = 'accepted'
+                reason = 'accepted'
             else:
                 decision = 'denied'
                 reason = 'not on theme'
