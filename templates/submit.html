@@ -62,7 +62,7 @@
 </head>
 <body>
     <h1 align="center">Submit a Poem</h1>
-    <h2>The Current theme is: Cyberpunk</h2>
+    <h2>The Current theme is: {{ theme }}</h2>
     <form align="center" method="post" name="submitForm" onsubmit="return validateForm()">
         <textarea name="submission_text" id="submission_text" rows="10" cols="50" placeholder="Insert submission here"></textarea>
         <br>

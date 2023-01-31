@@ -13,7 +13,7 @@ basic_auth = BasicAuth(app)
 #Set the Theme and define classifiers for determining what is accepted
 classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 candidate_labels = ['good poetry', 'bad poetry']
-theme = 'cyberpunk'
+theme = 'Cyberpunk'
 theme_check = f'{theme} themed writing'
 theme_labels = [f'{theme} themed writing', 'other theme']
 
@@ -38,7 +38,7 @@ def get_db():
 
 @app.route('/')
 def home():
-    return render_template('home.html', theme=theme)
+    return render_template('home.html')
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
@@ -65,7 +65,7 @@ def submit():
         session.commit()
         session.close()
         return render_template('loading.html', decision=decision, reason=reason)
-    return render_template('submit.html')
+    return render_template('submit.html', theme=theme)
 
 @app.route('/result')
 def result():
