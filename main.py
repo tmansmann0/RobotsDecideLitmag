@@ -50,8 +50,10 @@ def submit():
                 decision = 'accepted'
             else:
                 decision = 'denied'
+                reason = 'not on theme'
         else:
             decision = 'denied'
+            reason = 'other'
         session = get_db()
         # Create a new Submission object and add it to the session
         submission = Submission(submission_text=submission_text, email=email, decision=decision)
@@ -59,13 +61,14 @@ def submit():
         # Commit the transaction
         session.commit()
         session.close()
-        return render_template('loading.html', decision=decision)
+        return render_template('loading.html', decision=decision, reason=reason)
     return render_template('submit.html')
 
 @app.route('/result')
 def result():
     decision = request.args.get('decision')
-    return render_template('result.html', decision=decision)
+    reason = request.args.get('reason')
+    return render_template('result.html', decision=decision, reason=reason)
 
 @app.route('/submissions')
 @basic_auth.required
