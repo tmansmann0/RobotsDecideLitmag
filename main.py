@@ -56,7 +56,7 @@ def submit():
                 reason = 'Not on theme'
         else:
             decision = 'denied'
-            reason = 'Other'
+            reason = 'Rob didnt think this was a poem'
         session = get_db()
         # Create a new Submission object and add it to the session
         submission = Submission(submission_text=submission_text, email=email)
