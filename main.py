@@ -59,7 +59,7 @@ def submit():
             reason = 'other'
         session = get_db()
         # Create a new Submission object and add it to the session
-        submission = Submission(submission_text=submission_text, email=email, decision=decision)
+        submission = Submission(submission_text=submission_text, email=email)
         session.add(submission)
         # Commit the transaction
         session.commit()

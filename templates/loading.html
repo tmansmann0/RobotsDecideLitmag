@@ -48,7 +48,8 @@
     <script>
         setTimeout(function() {
             var decision = "{{ decision }}";
-            var url = '/result?decision=' + decision;
+            var reason = "{{ reason }}";
+            var url = '/result?decision=' + decision + '&reason=' + reason;
             window.location.href = url;
         }, 3000); // 3000 milliseconds = 3 seconds
     </script>
