@@ -5,6 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from flask_basicauth import BasicAuth
 
+
 app = Flask(__name__)
 app.config['BASIC_AUTH_USERNAME'] = 'username'
 app.config['BASIC_AUTH_PASSWORD'] = 'password'
@@ -16,7 +17,6 @@ candidate_labels = ['good poetry', 'bad poetry']
 
 #Define Theme
 theme = 'Cyberpunk'
-defined_theme = 'Cyberpunk, Dystopian Worlds, Government collapse'
 theme_check = f'theme of {theme} or related contained in writing'
 theme_labels = [f'theme of {theme} or related contained in writing', 'other theme']
 
@@ -95,4 +95,5 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5000)
+
