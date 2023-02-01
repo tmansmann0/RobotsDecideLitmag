@@ -21,6 +21,24 @@
             font-family: 'Audiowide-Regular';
             font-size: 1.5em;
             text-align: center;
+            line-height: 0.2;
+        }
+        p2 {
+            font-family: 'Audiowide-Regular';
+            font-size: 1.2 em;
+            text-align: center;
+            word-wrap: break-word;
+            white-space: pre-line;
+            line-height: 0.2;
+        }
+        p3 {
+            font-family: 'Audiowide-Regular';
+            font-size: 0.5em;
+            text-align: center;
+            line-height: 0.2;
+        }
+        img {
+        width: 20%
         }
         /* Center the button horizontally */
         input[type="submit"] {
@@ -44,13 +62,20 @@
 <body>
     <h1>Decision</h1>
     {% if decision == 'accepted' %}
-        <p>Congratulations! Your poem has been accepted.</p>
+    <div style="text-align:center;">
+    <img src="{{ url_for('static', filename='send.gif') }}" />
+    <p>Congratulations! Your poem has been accepted*.</p>
+    <p>We'll email you when the issue comes out.</p>
+    <p3>*Subject to final human review</p3>
+    </div>
     {% else %}
         <p>Sorry, your poem has been denied.</p>
         <p>Rob says the reason is: {{ reason }}</p>
-        <p>Please don't feel discouraged!</p>
-        <p>Our systems are FAR from perfect.</p>
-        <p>You can resubmit as many times as you like!</p>
+        <div style="text-align:center;">
+        <p2>Please don't feel discouraged!</p2> <br>
+        <p2>Our systems are FAR from perfect.</p2> <br>
+        <p2>You can resubmit as many times as you like!</p2> <br>
+        </div>
     {% endif %}
     <form action="submit" method="GET">
     <input type="submit" value="Submit Again">

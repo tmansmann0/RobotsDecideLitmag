@@ -36,12 +36,18 @@
           font-family: 'Audiowide-Regular';
           src: url({{ url_for('static', filename='Audiowide-Regular.ttf') }});
         }
-
+        img {
+        width: 30%;
+        }
     </style>
 </head>
 <body>
     <div class="loading-container">
-        <img class="loading-gif gif-size" src="{{ url_for('static', filename='loading.gif') }}" alt="Robot Mascot reading your entry">
+        <script>
+        const images = ['{{ url_for('static', filename='loading.gif') }}', '{{ url_for('static', filename='search.gif') }}', '{{ url_for('static', filename='looking.gif') }}'];
+        const randomImage = images[Math.floor(Math.random() * images.length)];
+        document.write(`<img src="${randomImage}" alt="Random GIF" />`);
+        </script>
         <div class="loading-text" style="font-family: 'Audiowide-Regular';">Hold tight, Rob is reading your submission</div>
     </div>
 

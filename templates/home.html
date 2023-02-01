@@ -21,6 +21,9 @@
         h2{
             font-family: 'Audiowide-Regular';
         }
+        img {
+        width: 20%
+        }
         a {
             text-decoration: none;
             color: #fff;
@@ -63,6 +66,8 @@
 </head>
 <body>
     <h1>Robots Decide Litmag</h1>
+    <img src="{{ url_for('static', filename='wave.gif') }}">
+    <h2>Im rob, nice to meet you</h2>
     <a href="{{ url_for('submit') }}">Submit a Poem</a>
     <div class="info-container">
         <a href="#" id="info-button">What is this?</a>
@@ -77,8 +82,20 @@
         var infoBox = document.querySelector("#info-box");
         infoButton.addEventListener("click", function(){
             infoButton.style.display = "none";
+            document.querySelector("h2").style.display = "none";
             infoBox.classList.toggle("show");
         });
+    </script>
+    <script>
+        let text = document.querySelector('h2');
+        let textArray = text.innerHTML.split('');
+        text.innerHTML = '';
+
+        textArray.forEach(function(letter, i) {
+        setTimeout(function() {
+            text.innerHTML += letter;
+        }, 75 * i);
+    });
     </script>
 </body>
 </html>
