@@ -44,7 +44,7 @@
 <body>
     <div class="loading-container">
         <script>
-        const images = ['{{ url_for('static', filename='loading.gif') }}', '{{ url_for('static', filename='search.gif') }}', '{{ url_for('static', filename='looking.gif') }}'];
+        const images = ['{{ url_for('static', filename='loading.gif') }}', '{{ url_for('static', filename='search.gif') }}', '{{ url_for('static', filename='looking.gif'), '{{ url_for('static', filename='pondering.gif') }}'];
         const randomImage = images[Math.floor(Math.random() * images.length)];
         document.write(`<img src="${randomImage}" alt="Random GIF" />`);
         </script>
